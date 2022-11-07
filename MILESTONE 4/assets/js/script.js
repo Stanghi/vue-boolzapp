@@ -175,6 +175,8 @@ createApp({
             newMsg: "",
             currentChat: 0,
             answerMsg: "Ok!",
+            showContacts: [],
+            search: ''
         };
     }, // end data
 
@@ -236,6 +238,17 @@ createApp({
                 status: "received",
             });
         },
+
+        searchcon(search) {
+            this.showContacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+        },
+
+        changeFilteredChat(i) {
+            this.contacts[this.chatOpened].visible = true;
+            this.showContacts[this.chatOpened].visible = true;
+            this.chatOpened = i;
+            this.showContacts[this.chatOpened].visible = false;
+        }
     }, // methods
 
     mounted() {
