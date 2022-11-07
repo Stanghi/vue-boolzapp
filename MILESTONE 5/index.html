@@ -42,13 +42,13 @@
                                 </div>
                             </div>
                             <!-- notifications -->
-                            <div class="notifications">
+                            <div class="notifications" v-if="!hideNotifications">
                                 <div class="circle">
                                     <i class="fa-solid fa-bell-slash"></i>
                                 </div>
                                 <div class="text">
                                     <span>Ricevi notifiche di nuovi messaggi</span>
-                                    <span>Attiva notifiche desktop</span>
+                                    <span @click="hideNotifications = true">Attiva notifiche desktop</span>
                                 </div>
                             </div>
                             <!-- input-search-area -->
@@ -115,7 +115,12 @@
                             <div class="messages-chat-area">
                                 <div v-for="(msg, index) in contacts[chatOpened].messages" class="row-msg" :class="msg.status == 'sent' ? 'end' : 'start'">
                                     <!-- msg -->
-                                    <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'"> 
+                                    <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'">
+                                        <i @click="showDropDown()" class="fa-solid fa-chevron-down"></i>
+                                        <div class="drop-down" v-if="show">
+                                            <p>Message info</p>
+                                            <p @click="deleteMsg(index)">Delete message</p>
+                                        </div>
                                         <p>{{msg.message}}</p>
                                         <div class="msg-date">{{newDate(index)}}</div>
                                     </div>

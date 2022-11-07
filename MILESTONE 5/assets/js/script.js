@@ -176,7 +176,9 @@ createApp({
             currentChat: 0,
             answerMsg: "Ok!",
             showContacts: [],
-            search: ''
+            search: "",
+            show: false,
+            hideNotifications: false,
         };
     }, // end data
 
@@ -240,7 +242,11 @@ createApp({
         },
 
         searchcon(search) {
-            this.showContacts = this.contacts.filter(elm => elm.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+            this.showContacts = this.contacts.filter((elm) =>
+                elm.name
+                    .toLocaleLowerCase()
+                    .includes(search.toLocaleLowerCase())
+            );
         },
 
         changeFilteredChat(i) {
@@ -248,6 +254,16 @@ createApp({
             this.showContacts[this.chatOpened].visible = true;
             this.chatOpened = i;
             this.showContacts[this.chatOpened].visible = false;
+        },
+
+        showDropDown() {
+            this.show ? (this.show = false) : (this.show = true);
+        },
+
+        deleteMsg(i) {
+            if (this.contacts[this.chatOpened].messages.length > 1) {
+                this.contacts[this.chatOpened].messages.splice(i, 1)
+            }
         }
     }, // methods
 

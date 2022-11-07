@@ -39,8 +39,9 @@ body {
 }
 
 .container-app {
+    margin: 100px;
     display: flex;
-    width: 70%;
+    width: 1300px;
     height: 90%;
     background-color: white;
 }
@@ -53,13 +54,26 @@ body {
     background-color: #eaeaea;
 }
 
+i {
+    opacity: 0.5;
+    color: #6b7376;
+}
+
+.fa-bell-slash {
+    opacity: 1;
+    color: #8edafc;
+}
+
 i:hover {
     cursor: pointer;
+    opacity: 1;
+    color: #6b7376;
 }
 
 /* ------------------x------------------ */
 .chat-list-area {
     width: 40%;
+    min-width: 405px;
 }
 
 .top-app.you {
@@ -85,7 +99,6 @@ i:hover {
 }
 
 .top-app-right i {
-    color: #b1b1b1;
     font-size: 1.2rem;
     padding: 10px;
 }
@@ -102,7 +115,6 @@ i:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #8edafc;
     background-color: #f2fbff;
 }
 
@@ -160,7 +172,7 @@ i:hover {
     background-color: #e9ebeb69;
 }
 
-.visible-chat{
+.visible-chat {
     background-color: #e9ebeb;
 }
 
@@ -206,6 +218,7 @@ i:hover {
     flex-direction: column;
     justify-content: space-between;
     width: 60%;
+    min-width: 405px;
 }
 
 .top-app .text span:last-child {
@@ -220,7 +233,6 @@ i:hover {
     padding: 0 30px;
     height: 60px;
     font-size: 1.5rem;
-    color: #6b7376;
     background-color: #eaeaea;
 }
 
@@ -244,13 +256,14 @@ i:hover {
 .msg {
     position: relative;
     display: flex;
+    word-break: break-all;
+    overflow-wrap: break-word;
     align-items: center;
-    padding-left: 20px;
     font-size: 0.9rem;
     margin: 10px;
-    width: 300px;
-    height: 50px;
+    padding: 20px 50px 20px 20px;
     border-radius: 10px;
+    box-shadow: 0px 0px 18px -8px #000000;
 }
 
 .mine {
@@ -259,6 +272,36 @@ i:hover {
 
 .avatar {
     background-color: #ffffff;
+}
+
+.fa-chevron-down {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    color: #6b7376;
+}
+
+.drop-down {
+    z-index: 999;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    padding: 5px;
+    width: 150px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 0px 18px -8px #000000;
+}
+
+.drop-down p {
+    margin: 10px 5px;
+    color: #6b7376;
+}
+
+.drop-down p:hover {
+    cursor: pointer;
+    color: black;
 }
 
 .msg-date {
