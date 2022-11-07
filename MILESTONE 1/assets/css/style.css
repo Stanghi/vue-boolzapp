@@ -1,0 +1,19 @@
+/* ----------------GENERAL---------------- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* outline: 2px solid red; */
+}
+
+body {
+    font-family: "Lato", sans-serif;
+}
+
+/* ----------------UTILITY---------------- */
+.debug {
+    background-color: rgba(255, 0, 0, 0.25);
+    /* border: 1px solid black; */
+}
+
+/* ------------------BODY------------------ */
