@@ -172,6 +172,9 @@ createApp({
                 },
             ],
             chatOpened: 0,
+            newMsg: "",
+            currentChat: 0,
+            answerMsg: "Ok!",
         };
     }, // end data
 
@@ -200,6 +203,38 @@ createApp({
             this.contacts[this.chatOpened].visible = true;
             this.chatOpened = i;
             this.contacts[i].visible = false;
+        },
+
+        newMessage(newMsg) {
+            if (
+                newMsg != "" &&
+                newMsg != null &&
+                newMsg != undefined &&
+                newMsg != " "
+            ) {
+                let finalDate;
+                let current = new Date();
+                finalDate = current.toLocaleTimeString();
+                this.currentChat = this.chatOpened;
+                this.contacts[this.currentChat].messages.push({
+                    date: finalDate,
+                    message: newMsg,
+                    status: "sent",
+                });
+                this.newMsg = "";
+                setTimeout(this.answer, 1000);
+            }
+        },
+
+        answer() {
+            let finalDate;
+            let current = new Date();
+            finalDate = current.toLocaleTimeString();
+            this.contacts[this.currentChat].messages.push({
+                date: finalDate,
+                message: this.answerMsg,
+                status: "received",
+            });
         },
     }, // methods
 
