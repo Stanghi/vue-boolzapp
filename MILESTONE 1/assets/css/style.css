@@ -8,12 +8,268 @@
 
 body {
     font-family: "Lato", sans-serif;
+    background-color: #d5dbd8;
 }
 
 /* ----------------UTILITY---------------- */
 .debug {
     background-color: rgba(255, 0, 0, 0.25);
-    /* border: 1px solid black; */
+    border: 1px solid black;
 }
 
 /* ------------------BODY------------------ */
+.main-container {
+    position: relative;
+    height: 100vh;
+}
+
+.top-band {
+    height: 15%;
+    background-color: #009688;
+}
+
+.center-container-app {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container-app {
+    display: flex;
+    width: 70%;
+    height: 90%;
+    background-color: white;
+}
+
+.top-app {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: #eaeaea;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+/* ------------------x------------------ */
+.chat-list-area {
+    width: 40%;
+}
+
+.top-app.you {
+    border-right: 2px solid #d9d9d9;
+}
+
+.top-app .circle {
+    margin-left: 10px;
+}
+
+.top-app-left {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.top-app-left span {
+    margin-left: 10px;
+}
+
+.top-app-right {
+    margin-right: 10px;
+}
+
+.top-app-right i {
+    color: #b1b1b1;
+    font-size: 1.2rem;
+    padding: 10px;
+}
+
+.notifications {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    background-color: #8edafc;
+}
+
+.notifications .circle {
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8edafc;
+    background-color: #f2fbff;
+}
+
+.notifications .text span:first-child {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.notifications .text span:last-child {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #6e92aa;
+}
+
+.input-search-area {
+    display: flex;
+    padding: 5px;
+    background-color: #fafafa;
+}
+
+.lens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: #b6b9bb;
+    background-color: #ffffff;
+}
+
+.input-search-area input {
+    padding-left: 10px;
+    width: 100%;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.chat-list {
+    height: calc(100% - 170px);
+    overflow: auto;
+}
+
+.chat {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 2px solid #f5f5f5;
+}
+
+.chat:hover {
+    cursor: pointer;
+    background-color: #e9ebeb;
+}
+
+.circle {
+    margin-left: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.circle img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.text span:first-child {
+    font-weight: bold;
+}
+
+.text span:last-child,
+.time {
+    color: #c2c6d1;
+    font-size: 0.9rem;
+}
+
+.time {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+}
+
+/* ------------------x------------------ */
+.chat-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+}
+
+.top-app .text span:last-child {
+    color: #6b7376;
+    font-weight: normal;
+}
+
+.input-msg-chat-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    height: 60px;
+    font-size: 1.5rem;
+    color: #6b7376;
+    background-color: #eaeaea;
+}
+
+.messages-chat-area {
+    padding: 50px 70px;
+    width: 100%;
+    height: calc(100% - 120px);
+    overflow: auto;
+    background-image: url("../img/mine.jpg");
+    background-position: center;
+}
+
+.row-msg {
+    display: flex;
+}
+
+.end {
+    justify-content: flex-end;
+}
+
+.msg {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    margin: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.mine {
+    background-color: #d5f9ba;
+}
+
+.avatar {
+    background-color: #ffffff;
+}
+
+.msg-date {
+    margin: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.7rem;
+    color: #6b7376;
+}
+
+.input-msg-chat-area input {
+    width: 85%;
+    height: 65%;
+    border: none;
+    border-radius: 5px;
+    padding-left: 20px;
+}

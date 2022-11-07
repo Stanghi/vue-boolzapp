@@ -171,8 +171,28 @@ createApp({
                     ],
                 },
             ],
+            chatOpened: 0,
         };
     }, // end data
 
-    methods: {}, // methods
+    methods: {
+        newDate(i) {
+            let date = this.contacts[this.chatOpened].messages[i].date;
+            if (date.length > 10) {
+                modifiedDate = date.slice(10, 16);
+            } else {
+                modifiedDate = date.slice(0, 5);
+            }
+            return modifiedDate;
+        },
+
+        changetime(date) {
+            if (date.length > 10) {
+                modifiedDate = date.slice(10, 16);
+            } else {
+                modifiedDate = date.slice(0, 5);
+            }
+            return modifiedDate;
+        },
+    }, // methods
 }).mount("#app");
