@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- CDN Vue.js -->
+        <script src="https://unpkg.com/vue@3"></script>
+
+        <!-- CDN Font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <title>Boolzapp</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="main-container">
+                <div class="top-band"></div>
+                <div class="center-container-app">
+                    <div class="container-app">
+                        <!-- chat-list-area -->
+                        <div class="chat-list-area">
+                            <!-- top-app -->
+                            <div class="top-app you">
+                                <div class="top-app-left">
+                                    <div class="circle">
+                                        <img src="assets/img/avatar_io.jpg" alt="io" />
+                                    </div>
+                                    <span>Sofia</span>
+                                </div>
+                                <div class="top-app-right">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                    <i class="fa-solid fa-message"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                            <!-- notifications -->
+                            <div class="notifications">
+                                <div class="circle">
+                                    <i class="fa-solid fa-bell-slash"></i>
+                                </div>
+                                <div class="text">
+                                    <span>Ricevi notifiche di nuovi messaggi</span>
+                                    <span>Attiva notifiche desktop</span>
+                                </div>
+                            </div>
+                            <!-- input-search-area -->
+                            <div class="input-search-area">
+                                <div class="lens">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <input type="text" placeholder="Cerca o inizia una nuova chat" />
+                            </div>
+                            <!-- chat-list -->
+                            <div class="chat-list">
+                                <!-- chat -->
+                                <div v-for="(contact, index) in contacts" class="chat" :class="!contact.visible && 'visible-chat'" @click="changeChat(index)">
+                                    <div class="circle">
+                                        <img :src="'assets/img/avatar' + contact.avatar + '.jpg'" :alt="contact.name" />
+                                    </div>
+                                    <div class="text">
+                                        <span>{{contact.name}}</span>
+                                        <span>{{contact.messages[contact.messages.length-1].message}}</span>
+                                    </div>
+                                    <div class="time">
+                                        <span>{{changeTime(contact.messages[contact.messages.length-1].date)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- chat-area -->
+                        <div class="chat-area">
+                            <!-- top-app -->
+                            <div class="top-app">
+                                <div class="top-app-left">
+                                    <div class="circle">
+                                        <img :src="'assets/img/avatar' + contacts[chatOpened].avatar + '.jpg'" alt="io"/>
+                                    </div>
+                                    <div class="text">
+                                        <span>{{contacts[chatOpened].name}}</span>
+                                        <span>Ultimo accesso 12:00</span>
+                                    </div>
+                                </div>
+                                <div class="top-app-right">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <i class="fa-solid fa-paperclip"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </div>
+                            </div>
+                            <!-- messages-chat-area -->
+                            <div class="messages-chat-area">
+                                <div v-for="(msg, index) in contacts[chatOpened].messages" class="row-msg" :class="msg.status == 'sent' ? 'end' : 'start'">
+                                    <!-- msg -->
+                                    <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'"> 
+                                        <p>{{msg.message}}</p>
+                                        <div class="msg-date">{{newDate(index)}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- input-msg-chat-area -->
+                            <div class="input-msg-chat-area">
+                                <i class="fa-regular fa-face-smile"></i>
+                                <input type="text" placeholder="Scrivi un messaggio..." @keyup.enter="newMessage(newMsg)" v-model.trim="newMsg" autofocus />
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>
