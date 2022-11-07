@@ -178,7 +178,7 @@ createApp({
             showContacts: [],
             search: "",
             show: false,
-            hideNotifications: false,
+            hideNotifications: false
         };
     }, // end data
 
