@@ -241,7 +241,7 @@ createApp({
             });
         },
 
-        searchcon(search) {
+        searchContact(search) {
             this.showContacts = this.contacts.filter((elm) =>
                 elm.name
                     .toLocaleLowerCase()
