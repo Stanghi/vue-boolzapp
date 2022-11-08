@@ -265,6 +265,7 @@ createApp({
             if (this.contacts[this.chatOpened].messages.length !== 1) {
                 this.contacts[this.chatOpened].messages.splice(i, 1);
             }
+            this.hideChevron_hideDropDown();
         },
 
         lastAccess() {
