@@ -256,6 +256,11 @@ createApp({
             this.show ? (this.show = false) : (this.show = true);
         },
 
+        hideChevron_hideDropDown(){
+            this.showChevron = false;
+            this.show = false;
+        },
+
         deleteMsg(i) {
             if (this.contacts[this.chatOpened].messages.length !== 1) {
                 this.contacts[this.chatOpened].messages.splice(i, 1);
