@@ -210,12 +210,7 @@ createApp({
         },
 
         newMessage(newMsg) {
-            if (
-                newMsg != "" &&
-                newMsg != null &&
-                newMsg != undefined &&
-                newMsg != " "
-            ) {
+            if (newMsg != "" && newMsg != " ") {
                 let finalDate;
                 let current = new Date();
                 finalDate = current.toLocaleTimeString();
@@ -253,7 +248,7 @@ createApp({
             this.contacts[this.chatOpened].visible = true;
             this.showContacts[this.chatOpened].visible = true;
             this.chatOpened = i;
-            this.showContacts[this.chatOpened].visible = false;
+            this.showContacts[i].visible = false;
         },
 
         showDropDown() {
@@ -262,12 +257,30 @@ createApp({
 
         deleteMsg(i) {
             if (this.contacts[this.chatOpened].messages.length > 1) {
-                this.contacts[this.chatOpened].messages.splice(i, 1)
+                this.contacts[this.chatOpened].messages.splice(i, 1);
             }
-        }
+        },
+
+        lastAccess() {
+            let x = this.contacts[this.chatOpened].messages.length;
+            let date = this.contacts[this.chatOpened].messages[x - 1].date;
+
+            let modifiedDate;
+
+            if (date.length > 10) {
+                modifiedDate = date.slice(0, 16);
+                return `Ultimo accesso: ${modifiedDate}`;
+            } else {
+                if (this.contacts[this.chatOpened].messages[x - 1].status === "received") {
+                    modifiedDate = date.slice(0, 5);
+                    return `Ultimo accesso oggi alle ${modifiedDate}`;
+                } else return `Online`;
+            }
+        },
     }, // methods
 
     mounted() {
+        setTimeout(this.lastAccess, 8000);
         this.contacts[this.chatOpened].visible = false;
     }, // end mounted
 }).mount("#app");

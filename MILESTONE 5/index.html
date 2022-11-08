@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <!-- chat-list else-->
-                        <div class="chat-list" v-else>
+                        <div v-else class="chat-list">
                             <!-- chat -->
                             <div v-for="(contact, index) in showContacts" class="chat" :class="!contact.visible && 'visible-chat'" @click="changeFilteredChat(index)">
                                 <div class="circle">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="text">
                                     <span>{{contacts[chatOpened].name}}</span>
-                                    <span>Ultimo accesso 12:00</span>
+                                    <span>{{lastAccess()}}</span>
                                 </div>
                             </div>
                             <div class="top-app-right">
