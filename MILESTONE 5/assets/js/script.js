@@ -178,7 +178,8 @@ createApp({
             showContacts: [],
             search: "",
             show: false,
-            hideNotifications: false
+            hideNotifications: false,
+            showChevron: false
         };
     }, // end data
 
@@ -256,7 +257,7 @@ createApp({
         },
 
         deleteMsg(i) {
-            if (this.contacts[this.chatOpened].messages.length > 1) {
+            if (this.contacts[this.chatOpened].messages.length !== 1) {
                 this.contacts[this.chatOpened].messages.splice(i, 1);
             }
         },
@@ -271,7 +272,10 @@ createApp({
                 modifiedDate = date.slice(0, 16);
                 return `Ultimo accesso: ${modifiedDate}`;
             } else {
-                if (this.contacts[this.chatOpened].messages[x - 1].status === "received") {
+                if (
+                    this.contacts[this.chatOpened].messages[x - 1].status ===
+                    "received"
+                ) {
                     modifiedDate = date.slice(0, 5);
                     return `Ultimo accesso oggi alle ${modifiedDate}`;
                 } else return `Online`;
@@ -280,7 +284,6 @@ createApp({
     }, // methods
 
     mounted() {
-        setTimeout(this.lastAccess, 8000);
         this.contacts[this.chatOpened].visible = false;
     }, // end mounted
 }).mount("#app");

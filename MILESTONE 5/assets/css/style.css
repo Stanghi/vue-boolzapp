@@ -280,6 +280,7 @@ i:hover {
 
 .fa-chevron-down {
     position: absolute;
+    visibility: hidden;
     top: 0;
     right: 0;
     margin: 5px;
@@ -309,7 +310,8 @@ i:hover {
     color: var(--black);
 }
 
-.msg:hover .drop-down{
+.msg:hover .drop-down, 
+.msg:hover .fa-chevron-down{
     visibility: visible;
 }
 

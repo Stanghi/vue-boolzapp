@@ -113,8 +113,8 @@
                         <div class="messages-chat-area">
                             <div v-for="(msg, index) in contacts[chatOpened].messages" class="row-msg" :class="msg.status == 'sent' ? 'end' : 'start'">
                                 <!-- msg -->
-                                <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'" @mouseleave="show = false">
-                                    <i @click="showDropDown()" class="fa-solid fa-chevron-down"></i>
+                                <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'" @mouseover="showChevron = true" @mouseleave="showChevron = false">
+                                    <i @click="showDropDown()" class="fa-solid fa-chevron-down" v-if="showChevron"></i>
                                     <div class="drop-down" v-if="show">
                                         <p>Message info</p>
                                         <p @click="deleteMsg(index)">Delete message</p>
