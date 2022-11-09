@@ -35,7 +35,8 @@
 }
 
 @media screen and (max-width: 500px) {
-    .fa-bars {
+    .fa-bars,
+    .fa-xmark {
         display: block;
         margin: 15px;
         font-size: 2rem;
@@ -57,10 +58,6 @@
     .chat-list-area .top-app-right,
     #my-name {
         display: block;
-    }
-
-    .red {
-        color: red;
     }
 
     .chat-list-area-none {

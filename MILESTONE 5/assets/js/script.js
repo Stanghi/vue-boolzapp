@@ -235,6 +235,11 @@ createApp({
             this.hideList ? (this.hideList = false) : (this.hideList = true);
         },
 
+        chatOpened_hideList(i) {
+            this.chatOpened = i;
+            this.hideList = false;
+        },
+
         deleteMsg(i) {
             if (this.contacts[this.chatOpened].messages.length !== 1) {
                 this.contacts[this.chatOpened].messages.splice(i, 1);

@@ -36,7 +36,7 @@
                         <!-- top-app -->
                         <div class="top-app you">
                             <div class="top-app-left">
-                                <i class="fa-solid fa-bars" :class="hideList && 'red'" @click="hideListToggle()"></i>
+                                <i class="fa-solid fa-xmark" @click="hideListToggle()"></i>
                                 <div class="circle">
                                     <img src="assets/img/avatar_io.jpg" alt="io" />
                                 </div>
@@ -77,7 +77,8 @@
                                 v-show="contact.visible"
                                 class="chat"
                                 :class="index === chatOpened && 'visible-chat'"
-                                @click="chatOpened = index">
+                                @click="chatOpened_hideList(index)">
+                                <!-- chatOpened = index -->
                                 <div class="circle">
                                     <img :src="'assets/img/avatar' + contact.avatar + '.jpg'" :alt="contact.name" />
                                 </div>
@@ -97,7 +98,7 @@
                         <!-- top-app -->
                         <div class="top-app">
                             <div class="top-app-left">
-                                <i class="fa-solid fa-bars" :class="hideList && 'red'" @click="hideListToggle()"></i>
+                                <i class="fa-solid fa-bars" @click="hideListToggle()"></i>
                                 <div class="circle">
                                     <img :src="'assets/img/avatar' + contacts[chatOpened].avatar + '.jpg'" alt="io" />
                                 </div>
