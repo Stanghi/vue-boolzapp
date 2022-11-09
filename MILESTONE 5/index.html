@@ -79,10 +79,10 @@
                                 </div>
                                 <div class="text">
                                     <span>{{contact.name}}</span>
-                                    <span>{{contact.messages[contact.messages.length-1].message}}</span>
+                                    <span :set="lastMessage = showLastMessage(contact)">{{lastMessage}}</span>
                                 </div>
                                 <div class="time">
-                                    <span>{{changeTime(contact.messages[contact.messages.length-1].date)}}</span>
+                                    <span :set="time = showLastMessageDate(index)">{{time}}</span>
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="text">
                                     <span>{{contacts[chatOpened].name}}</span>
-                                    <span>{{lastAccess()}}</span>
+                                    <span :set="lastAccess = lastAccessFunction()">{{lastAccess}}</span>
                                 </div>
                             </div>
                             <div class="top-app-right">
@@ -125,7 +125,7 @@
                                         <p @click="deleteMsg(index)">Delete message</p>
                                     </div>
                                     <p>{{msg.message}}</p>
-                                    <div class="msg-date">{{newDate(index)}}</div>
+                                    <div class="msg-date" :set="time = formatTime(index)">{{time}}</div>
                                 </div>
                             </div>
                         </div>

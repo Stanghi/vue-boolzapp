@@ -174,30 +174,12 @@ createApp({
             show: false,
             hideNotifications: false,
             showChevron: false,
+            accessList: [],
+            finalDate: "",
         };
     }, // end data
 
     methods: {
-        newDate(i) {
-            let date = this.contacts[this.chatOpened].messages[i].date;
-            let modifiedDate;
-            if (date.length > 10) {
-                modifiedDate = date.slice(10, 16);
-            } else {
-                modifiedDate = date.slice(0, 5);
-            }
-            return modifiedDate;
-        },
-
-        changeTime(date) {
-            if (date.length > 10) {
-                modifiedDate = date.slice(10, 16);
-            } else {
-                modifiedDate = date.slice(0, 5);
-            }
-            return modifiedDate;
-        },
-
         newMessage(newMsg) {
             if (newMsg != "" && newMsg != " ") {
                 let finalDate;
@@ -215,14 +197,18 @@ createApp({
         },
 
         answer() {
-            let finalDate;
             let current = new Date();
-            finalDate = current.toLocaleTimeString();
+            this.finalDate = current.toLocaleTimeString();
             this.contacts[this.currentChat].messages.push({
-                date: finalDate,
+                date: this.finalDate,
                 message: this.answerMsg,
                 status: "received",
             });
+
+            // for (i in this.contacts[this.chatOpened].messages) {
+            //     this.accessList = this.contacts[this.chatOpened].messages[i].date;
+            // }
+            this.accessList.unshift(this.finalDate);
         },
 
         searchContact() {
@@ -247,25 +233,73 @@ createApp({
         deleteMsg(i) {
             if (this.contacts[this.chatOpened].messages.length !== 1) {
                 this.contacts[this.chatOpened].messages.splice(i, 1);
+            } else {
+                const emptyArray = [];
+                this.contacts[this.chatOpened].messages = emptyArray;
             }
             this.hideChevron_hideDropDown();
         },
 
-        lastAccess() {
+        showLastMessage(contact) {
+            if (contact.messages.length !== 0) {
+                return contact.messages[contact.messages.length - 1].message;
+            } else {
+                return "";
+            }
+        },
+
+        formatTime(i) {
+            const date = this.contacts[this.chatOpened].messages[i].date;
+            if (date.length > 10) {
+                return date.slice(11, 16);
+            } else {
+                return date.slice(0, 5);
+            }
+        },
+
+        showLastMessageDate(i) {
+            if (this.contacts[i].messages.length !== 0) {
+                const date = this.contacts[i].messages[this.contacts[i].messages.length - 1].date;
+                if (date.length > 10) {
+                    return date.slice(11, 16);
+                } else {
+                    return date.slice(0, 5);
+                }
+            } else {
+                return "";
+            }
+        },
+
+        lastAccessFunction() {
             let x = this.contacts[this.chatOpened].messages.length;
             let date = this.contacts[this.chatOpened].messages[x - 1].date;
 
+            let y = this.contacts[this.chatOpened].messages.length - 1;
+            let dateY = this.contacts[this.chatOpened].messages[y - 1].date;
+
             let modifiedDate;
 
-            if (date.length > 10) {
-                modifiedDate = date.slice(0, 16);
-                return `Ultimo accesso: ${modifiedDate}`;
+            if (this.accessList.length != 0) {
+                let leti = this.accessList[0];
+
+                if (leti.length > 10) {
+                    leti.slice(11, 16);
+                    return `Ultimo accesso oggi alle ${leti}`;
+                } else {
+                    leti.slice(0, 5);
+                    return `Ultimo accesso oggi alle ${leti}`;
+                }
             } else {
                 if (this.contacts[this.chatOpened].messages[x - 1].status === "received") {
-                    modifiedDate = date.slice(0, 5);
-                    return `Ultimo accesso oggi alle ${modifiedDate}`;
-                } else return `Online`;
+                    modifiedDate = date.slice(0, 16);
+                    return `Ultimo accesso: ${modifiedDate}`;
+                } else {
+                    modifiedDate = dateY.slice(0, 16);
+                    return `Ultimo accesso: ${modifiedDate}`;
+                }
             }
         },
     }, // methods
+
+    mounted() {},
 }).mount("#app");
