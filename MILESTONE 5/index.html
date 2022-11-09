@@ -50,7 +50,7 @@
                         </div>
                         <!-- notifications -->
                         <div class="notifications" v-if="!hideNotifications">
-                            <div class="circle">
+                            <div class="circle" @click="hideNotifications = true">
                                 <i class="fa-solid fa-bell-slash"></i>
                             </div>
                             <div class="text">
@@ -138,14 +138,19 @@
                         </div>
                         <!-- input-msg-chat-area -->
                         <div class="input-msg-chat-area">
-                            <i class="fa-regular fa-face-smile"></i>
+                            <div>
+                                <i class="fa-regular fa-face-smile"></i>
+                            </div>
                             <input
                                 type="text"
                                 placeholder="Scrivi un messaggio..."
                                 @keyup.enter="newMessage(newMsg)"
                                 v-model.trim="newMsg"
                                 autofocus />
-                            <i class="fa-solid fa-microphone"></i>
+                            <div>
+                                <i class="fa-solid fa-paper-plane" v-show="newMsg" @click="newMessage(newMsg)"></i>
+                                <i class="fa-solid fa-microphone" v-show="!newMsg"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
