@@ -174,7 +174,7 @@ createApp({
             show: false,
             hideNotifications: false,
             showChevron: false,
-            accessList: [],
+            //accessList: [],
             finalDate: "",
         };
     }, // end data
@@ -270,7 +270,7 @@ createApp({
             }
         },
 
-        lastAccessFunction() {
+        /*         lastAccessFunction() {
             let x = this.contacts[this.chatOpened].messages.length;
             let date = this.contacts[this.chatOpened].messages[x - 1].date;
 
@@ -298,7 +298,7 @@ createApp({
                     return `Ultimo accesso: ${modifiedDate}`;
                 }
             }
-        },
+        }, */
     }, // methods
 
     mounted() {},
