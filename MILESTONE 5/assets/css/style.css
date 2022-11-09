@@ -272,16 +272,18 @@ i:hover {
     font-size: 0.9rem;
     margin: 10px;
     padding: 20px 50px 20px 20px;
-    border-radius: 10px;
+
     box-shadow: 0px 0px 18px -8px var(--black);
 }
 
 .mine {
     background-color: var(--send-chat);
+    border-radius: 15px 15px 0 15px;
 }
 
 .avatar {
     background-color: var(--white);
+    border-radius: 15px 15px 15px 0;
 }
 
 .fa-chevron-down {
