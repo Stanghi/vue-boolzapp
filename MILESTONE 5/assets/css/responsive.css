@@ -1,0 +1,81 @@
+@media screen and (max-width: 878px) {
+    .container-app {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .chat-list-area {
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .chat-list-area .text,
+    .chat-list-area .time,
+    .chat-list-area input,
+    .chat-list-area .top-app-right,
+    #my-name {
+        display: none;
+    }
+
+    .chat-area {
+        width: 100%;
+    }
+
+    .top-app.you {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .top-app.you .circle {
+        margin-left: 0;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .fa-bars {
+        display: block;
+        margin: 15px;
+        font-size: 2rem;
+    }
+
+    .top-app.you {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .text span:first-child {
+        display: block;
+    }
+
+    .chat-list-area .text,
+    .chat-list-area .time,
+    .chat-list-area input,
+    .chat-list-area .top-app-right,
+    #my-name {
+        display: block;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .chat-list-area-none {
+        display: none;
+    }
+
+    .chat-list-area-mobile {
+        z-index: 999;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+    }
+
+    .messages-chat-area {
+        padding: 20px;
+    }
+}

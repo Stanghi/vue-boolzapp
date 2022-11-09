@@ -59,6 +59,7 @@ i:hover {
     display: flex;
     width: 1300px;
     height: 90%;
+    box-shadow: 0px 0px 18px -8px var(--black);
     background-color: var(--white);
 }
 
@@ -78,11 +79,15 @@ i:hover {
 /* ------------------x------------------ */
 .chat-list-area {
     width: 40%;
-    min-width: 405px;
+    min-width: 395px;
 }
 
 .top-app.you {
     border-right: 2px solid #d9d9d9;
+}
+
+.fa-bars {
+    display: none;
 }
 
 .top-app .circle {

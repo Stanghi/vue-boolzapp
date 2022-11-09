@@ -176,6 +176,7 @@ createApp({
             showChevron: false,
             //accessList: [],
             finalDate: "",
+            hideList: false,
         };
     }, // end data
 
@@ -208,7 +209,7 @@ createApp({
             // for (i in this.contacts[this.chatOpened].messages) {
             //     this.accessList = this.contacts[this.chatOpened].messages[i].date;
             // }
-            this.accessList.unshift(this.finalDate);
+            //this.accessList.unshift(this.finalDate);
         },
 
         searchContact() {
@@ -228,6 +229,10 @@ createApp({
         hideChevron_hideDropDown() {
             this.showChevron = false;
             this.show = false;
+        },
+
+        hideListToggle() {
+            this.hideList ? (this.hideList = false) : (this.hideList = true);
         },
 
         deleteMsg(i) {

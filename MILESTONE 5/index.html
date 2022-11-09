@@ -22,6 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
 
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="assets/css/responsive.css" />
         <title>Boolzapp</title>
     </head>
     <body>
@@ -29,14 +30,17 @@
             <div class="main-container">
                 <div class="container-app">
                     <!-- chat-list-area -->
-                    <div class="chat-list-area">
+                    <div
+                        class="chat-list-area"
+                        :class="hideList && 'chat-list-area-mobile', !hideList && 'chat-list-area-none'">
                         <!-- top-app -->
                         <div class="top-app you">
                             <div class="top-app-left">
+                                <i class="fa-solid fa-bars" :class="hideList && 'red'" @click="hideListToggle()"></i>
                                 <div class="circle">
                                     <img src="assets/img/avatar_io.jpg" alt="io" />
                                 </div>
-                                <span>Sofia</span>
+                                <span id="my-name">Sofia</span>
                             </div>
                             <div class="top-app-right">
                                 <i class="fa-solid fa-circle-notch"></i>
@@ -93,6 +97,7 @@
                         <!-- top-app -->
                         <div class="top-app">
                             <div class="top-app-left">
+                                <i class="fa-solid fa-bars" :class="hideList && 'red'" @click="hideListToggle()"></i>
                                 <div class="circle">
                                     <img :src="'assets/img/avatar' + contacts[chatOpened].avatar + '.jpg'" alt="io" />
                                 </div>
