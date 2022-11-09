@@ -65,14 +65,14 @@
                                 v-model="search"
                                 @input="searchContact()" />
                         </div>
-                        <!-- chat-list if-->
+                        <!-- chat-list -->
                         <div class="chat-list">
                             <!-- chat -->
                             <div
                                 v-for="(contact, index) in contacts"
                                 v-show="contact.visible"
                                 class="chat"
-                                :class="!contact.visible && 'visible-chat'"
+                                :class="index === chatOpened && 'visible-chat'"
                                 @click="chatOpened = index">
                                 <div class="circle">
                                     <img :src="'assets/img/avatar' + contact.avatar + '.jpg'" :alt="contact.name" />
