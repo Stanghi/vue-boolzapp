@@ -9,7 +9,12 @@
         <script src="https://unpkg.com/vue@3"></script>
 
         <!-- CDN Font awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+            integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer" />
 
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,28 +59,21 @@
                             <div class="lens">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </div>
-                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @input="searchContact(search)" />
+                            <input
+                                type="text"
+                                placeholder="Cerca o inizia una nuova chat"
+                                v-model="search"
+                                @input="searchContact()" />
                         </div>
                         <!-- chat-list if-->
-                        <div class="chat-list" v-if="showContacts.length === 0 && !search">
+                        <div class="chat-list">
                             <!-- chat -->
-                            <div v-for="(contact, index) in contacts" class="chat" :class="!contact.visible && 'visible-chat'" @click="changeChat(index)">
-                                <div class="circle">
-                                    <img :src="'assets/img/avatar' + contact.avatar + '.jpg'" :alt="contact.name" />
-                                </div>
-                                <div class="text">
-                                    <span>{{contact.name}}</span>
-                                    <span>{{contact.messages[contact.messages.length-1].message}}</span>
-                                </div>
-                                <div class="time">
-                                    <span>{{changeTime(contact.messages[contact.messages.length-1].date)}}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- chat-list else-->
-                        <div v-else class="chat-list">
-                            <!-- chat -->
-                            <div v-for="(contact, index) in showContacts" class="chat" :class="!contact.visible && 'visible-chat'" @click="changeFilteredChat(index)">
+                            <div
+                                v-for="(contact, index) in contacts"
+                                v-show="contact.visible"
+                                class="chat"
+                                :class="!contact.visible && 'visible-chat'"
+                                @click="chatOpened = index">
                                 <div class="circle">
                                     <img :src="'assets/img/avatar' + contact.avatar + '.jpg'" :alt="contact.name" />
                                 </div>
@@ -96,7 +94,7 @@
                         <div class="top-app">
                             <div class="top-app-left">
                                 <div class="circle">
-                                    <img :src="'assets/img/avatar' + contacts[chatOpened].avatar + '.jpg'" alt="io"/>
+                                    <img :src="'assets/img/avatar' + contacts[chatOpened].avatar + '.jpg'" alt="io" />
                                 </div>
                                 <div class="text">
                                     <span>{{contacts[chatOpened].name}}</span>
@@ -111,9 +109,16 @@
                         </div>
                         <!-- messages-chat-area -->
                         <div class="messages-chat-area">
-                            <div v-for="(msg, index) in contacts[chatOpened].messages" class="row-msg" :class="msg.status == 'sent' ? 'end' : 'start'">
+                            <div
+                                v-for="(msg, index) in contacts[chatOpened].messages"
+                                class="row-msg"
+                                :class="msg.status == 'sent' ? 'end' : 'start'">
                                 <!-- msg -->
-                                <div class="msg" :class="msg.status == 'sent' ? 'mine' : 'avatar'" @mouseover="showChevron = true" @mouseleave="hideChevron_hideDropDown()">
+                                <div
+                                    class="msg"
+                                    :class="msg.status == 'sent' ? 'mine' : 'avatar'"
+                                    @mouseover="showChevron = true"
+                                    @mouseleave="hideChevron_hideDropDown()">
                                     <i @click="showDropDown()" class="fa-solid fa-chevron-down" v-if="showChevron"></i>
                                     <div class="drop-down" v-if="show">
                                         <p>Message info</p>
@@ -127,7 +132,12 @@
                         <!-- input-msg-chat-area -->
                         <div class="input-msg-chat-area">
                             <i class="fa-regular fa-face-smile"></i>
-                            <input type="text" placeholder="Scrivi un messaggio..." @keyup.enter="newMessage(newMsg)" v-model.trim="newMsg" autofocus />
+                            <input
+                                type="text"
+                                placeholder="Scrivi un messaggio..."
+                                @keyup.enter="newMessage(newMsg)"
+                                v-model.trim="newMsg"
+                                autofocus />
                             <i class="fa-solid fa-microphone"></i>
                         </div>
                     </div>

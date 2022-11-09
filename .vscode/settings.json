@@ -1,4 +1,5 @@
 {
     "prettier.bracketSameLine": true,
-    "prettier.arrowParens": "always"
+    "prettier.arrowParens": "always",
+    "liveServer.settings.port": 5501
 }

@@ -43,8 +43,7 @@ createApp({
                         },
                         {
                             date: "20/03/2020 16:35:00",
-                            message:
-                                "Mi piacerebbe ma devo andare a fare la spesa.",
+                            message: "Mi piacerebbe ma devo andare a fare la spesa.",
                             status: "sent",
                         },
                     ],
@@ -134,14 +133,12 @@ createApp({
                     messages: [
                         {
                             date: "10/01/2020 15:30:55",
-                            message:
-                                "Fai gli auguri a Martina che è il suo compleanno!",
+                            message: "Fai gli auguri a Martina che è il suo compleanno!",
                             status: "sent",
                         },
                         {
                             date: "10/01/2020 15:50:00",
-                            message:
-                                "Grazie per avermelo ricordato, le scrivo subito!",
+                            message: "Grazie per avermelo ricordato, le scrivo subito!",
                             status: "received",
                         },
                     ],
@@ -153,14 +150,12 @@ createApp({
                     messages: [
                         {
                             date: "10/01/2020 15:30:55",
-                            message:
-                                "Ciao, andiamo a mangiare la pizza stasera?",
+                            message: "Ciao, andiamo a mangiare la pizza stasera?",
                             status: "received",
                         },
                         {
                             date: "10/01/2020 15:50:00",
-                            message:
-                                "No, l'ho già mangiata ieri, ordiniamo sushi!",
+                            message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
                             status: "sent",
                         },
                         {
@@ -175,11 +170,10 @@ createApp({
             newMsg: "",
             currentChat: 0,
             answerMsg: "Ok!",
-            showContacts: [],
             search: "",
             show: false,
             hideNotifications: false,
-            showChevron: false
+            showChevron: false,
         };
     }, // end data
 
@@ -202,12 +196,6 @@ createApp({
                 modifiedDate = date.slice(0, 5);
             }
             return modifiedDate;
-        },
-
-        changeChat(i) {
-            this.contacts[this.chatOpened].visible = true;
-            this.chatOpened = i;
-            this.contacts[i].visible = false;
         },
 
         newMessage(newMsg) {
@@ -237,26 +225,21 @@ createApp({
             });
         },
 
-        searchContact(search) {
-            this.showContacts = this.contacts.filter((elm) =>
-                elm.name
-                    .toLocaleLowerCase()
-                    .includes(search.toLocaleLowerCase())
-            );
-        },
-
-        changeFilteredChat(i) {
-            this.contacts[this.chatOpened].visible = true;
-            this.showContacts[this.chatOpened].visible = true;
-            this.chatOpened = i;
-            this.showContacts[i].visible = false;
+        searchContact() {
+            this.contacts.forEach((contact) => {
+                if (!contact.name.toLowerCase().includes(this.search.toLowerCase())) {
+                    contact.visible = false;
+                } else {
+                    contact.visible = true;
+                }
+            });
         },
 
         showDropDown() {
             this.show ? (this.show = false) : (this.show = true);
         },
 
-        hideChevron_hideDropDown(){
+        hideChevron_hideDropDown() {
             this.showChevron = false;
             this.show = false;
         },
@@ -278,18 +261,11 @@ createApp({
                 modifiedDate = date.slice(0, 16);
                 return `Ultimo accesso: ${modifiedDate}`;
             } else {
-                if (
-                    this.contacts[this.chatOpened].messages[x - 1].status ===
-                    "received"
-                ) {
+                if (this.contacts[this.chatOpened].messages[x - 1].status === "received") {
                     modifiedDate = date.slice(0, 5);
                     return `Ultimo accesso oggi alle ${modifiedDate}`;
                 } else return `Online`;
             }
         },
     }, // methods
-
-    mounted() {
-        this.contacts[this.chatOpened].visible = false;
-    }, // end mounted
 }).mount("#app");
