@@ -133,4 +133,8 @@
     .input-msg-chat-area {
         padding: 0 10px;
     }
+
+    .msg.avatar .drop-down {
+        right: -130px;
+    }
 }

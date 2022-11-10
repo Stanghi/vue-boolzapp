@@ -174,9 +174,9 @@ createApp({
             show: false,
             hideNotifications: false,
             showChevron: false,
-            //accessList: [],
             finalDate: "",
             hideList: false,
+            arrayReverse: [],
         };
     }, // end data
 
@@ -205,11 +205,6 @@ createApp({
                 message: this.answerMsg,
                 status: "received",
             });
-
-            // for (i in this.contacts[this.chatOpened].messages) {
-            //     this.accessList = this.contacts[this.chatOpened].messages[i].date;
-            // }
-            //this.accessList.unshift(this.finalDate);
         },
 
         searchContact() {
@@ -280,35 +275,31 @@ createApp({
             }
         },
 
-        /*         lastAccessFunction() {
-            let x = this.contacts[this.chatOpened].messages.length;
-            let date = this.contacts[this.chatOpened].messages[x - 1].date;
+        lastAccessFunction() {
+            this.arrayReverse = [];
 
-            let y = this.contacts[this.chatOpened].messages.length - 1;
-            let dateY = this.contacts[this.chatOpened].messages[y - 1].date;
+            let messages = this.contacts[this.chatOpened].messages;
 
-            let modifiedDate;
+            for (message in messages) {
+                this.arrayReverse.unshift(messages[message]);
+            }
 
-            if (this.accessList.length != 0) {
-                let leti = this.accessList[0];
-
-                if (leti.length > 10) {
-                    leti.slice(11, 16);
-                    return `Ultimo accesso oggi alle ${leti}`;
+            for (i in this.arrayReverse) {
+                if (this.arrayReverse[i].status === "received") {
+                    let date = this.arrayReverse[i].date;
+                    if (date.length > 10) {
+                        let day = date.slice(0, 10);
+                        let hour = date.slice(11, 16);
+                        return `Ultimo accesso il ${day} alle ${hour}`;
+                    } else {
+                        let shortDate = date.slice(0, 5);
+                        return `Ultimo accesso oggi alle ${shortDate}`;
+                    }
                 } else {
-                    leti.slice(0, 5);
-                    return `Ultimo accesso oggi alle ${leti}`;
-                }
-            } else {
-                if (this.contacts[this.chatOpened].messages[x - 1].status === "received") {
-                    modifiedDate = date.slice(0, 16);
-                    return `Ultimo accesso: ${modifiedDate}`;
-                } else {
-                    modifiedDate = dateY.slice(0, 16);
-                    return `Ultimo accesso: ${modifiedDate}`;
+                    if (this.arrayReverse[i].status === "received") return "Sta Scrivendo...";
                 }
             }
-        }, */
+        },
     }, // methods
 
     mounted() {},
